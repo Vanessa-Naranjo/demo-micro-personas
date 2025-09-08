@@ -18,16 +18,16 @@ public class PersonaService {
 	public void crearPersona(PersonaDto persona) {
 		this.personas.add(persona);
 	}
-	
+
 	public List<PersonaDto> consultarPersonas() {
 		return personas;
 	}
-	
+
 	public PersonaDto consultarPersonaPorTipoDocumentoyDocumento(String tipoDocumento, String documento) {
 		for (PersonaDto personaDto : personas) {
-			if(personaDto.getTipoDocumento().equals(tipoDocumento) && personaDto.getDocumento().equals(documento)) {
+			if (personaDto.getTipoDocumento().equals(tipoDocumento) && personaDto.getDocumento().equals(documento)) {
 				return personaDto;
-			}	
+			}
 		}
 		return null;
 	}
