@@ -2,6 +2,7 @@ package com.lvnr.demo.micro.persona.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,8 +14,8 @@ import com.lvnr.demo.micro.persona.service.PersonaService;
 
 @RestController
 public class PersonaController {
-
-	private PersonaService personaService = new PersonaService();
+	@Autowired
+	private PersonaService personaService;
 
 	@GetMapping
 	public List<PersonaDto> consultarPersonas() {
@@ -28,8 +29,7 @@ public class PersonaController {
 	}
 
 	@GetMapping("/consultarPersona")
-	public PersonaDto consultarPersonaPorTipoDocumentoyDocumento(
-			@RequestParam String tipoDocumento,
+	public PersonaDto consultarPersonaPorTipoDocumentoyDocumento(@RequestParam String tipoDocumento,
 			@RequestParam String documento) {
 		return personaService.consultarPersonaPorTipoDocumentoyDocumento(tipoDocumento, documento);
 	}

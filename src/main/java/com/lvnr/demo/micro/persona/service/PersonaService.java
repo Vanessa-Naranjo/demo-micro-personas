@@ -1,14 +1,20 @@
 package com.lvnr.demo.micro.persona.service;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+
+import org.springframework.stereotype.Service;
 
 import com.lvnr.demo.micro.persona.dto.PersonaDto;
 
+@Service
 public class PersonaService {
 
-	private List<PersonaDto> personas = new ArrayList<>();
+	private List<PersonaDto> personas;
+
+	public PersonaService() {
+		personas = new ArrayList<>();
+	}
 
 	public void crearPersona(String tipoDocumento, String documento, String nombre, String apellidos) {
 		PersonaDto personaDto = new PersonaDto(tipoDocumento, documento, nombre, apellidos);
