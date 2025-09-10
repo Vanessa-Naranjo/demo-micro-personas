@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
 import com.lvnr.demo.micro.persona.dto.PersonaDto;
 
 @Service
@@ -25,6 +24,10 @@ public class PersonaService {
 		this.personas.add(persona);
 	}
 
+	public void crearPersonas(List<PersonaDto> personaDto) {
+		this.personas.addAll(personaDto);
+	}
+
 	public List<PersonaDto> consultarPersonas() {
 		return personas;
 	}
@@ -38,4 +41,18 @@ public class PersonaService {
 		return null;
 	}
 
+	public String eliminarPersonaPorTipoDocumentoyDocumento(String tipoDocumento, String documento) {
+		PersonaDto personaDto = this.consultarPersonaPorTipoDocumentoyDocumento(tipoDocumento, documento);
+		if (personaDto == null) {
+			return "La persona no existe: " + documento;
+		}
+		this.personas.remove(personaDto);
+		return "Se ha eliminado la persona";
+	}
+
+	public PersonaDto actualizarPersona(String tipoDocumento, String documento, PersonaDto personaDto) {
+		this.eliminarPersonaPorTipoDocumentoyDocumento(tipoDocumento, documento);
+		personas.add(personaDto);
+		return personaDto;
+	}
 }
