@@ -41,13 +41,13 @@ public class PersonaController {
 		return personaService.consultarPersonaPorTipoDocumentoyDocumento(tipoDocumento, documento);
 	}
 
-	@DeleteMapping("/{tipoDocumento},{documento}")
+	@DeleteMapping("/{tipoDocumento}/{documento}")
 	public String eliminarPersonaPorTipoDocumentoyDocumento(@PathVariable String tipoDocumento,
 			@PathVariable String documento) {
 		return personaService.eliminarPersonaPorTipoDocumentoyDocumento(tipoDocumento, documento);
 	}
 
-	@PutMapping("/{tipoDocumento},{documento}")
+	@PutMapping("/tipodedocumento/{tipoDocumento}/documento/{documento}")
 	public PersonaDto actualizarPersona(@PathVariable String tipoDocumento, @PathVariable String documento,
 			@RequestBody PersonaDto personaDto) {
 		return personaService.actualizarPersona(tipoDocumento, documento, personaDto);
